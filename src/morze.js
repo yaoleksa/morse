@@ -132,6 +132,7 @@ function cipher(sentence){
 }
 
 function decipher(sentence){
+    sentence = sentence.trim();
     const reverseAlphabetUa = {};
     const reverseAlphabetEn = {};
     const keysUa = [];
