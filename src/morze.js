@@ -156,4 +156,20 @@ function decipher(sentence){
     return result;
 }
 
-export { cipher, decipher }
+function toASCII(str) {
+    let res = '';
+    [...str].forEach(e => {
+        res += e.charCodeAt() + '.';
+    });
+    return res;
+}
+
+function fromASCII(str) {
+    let res = '';
+    str.split('.').forEach(e => {
+        res += e.length > 0 ? String.fromCharCode(parseInt(e)) : '';
+    });
+    return res;
+}
+
+export { cipher, decipher, toASCII, fromASCII }
