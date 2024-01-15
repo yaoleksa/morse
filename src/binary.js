@@ -19,7 +19,7 @@ export default class BinaryEncoder {
         return result;
     }
     static encode(txt) {
-        let result = '';
+        let result = new String();
         let asArray = txt.split('');
         for(let i of asArray) {
             result += this.#toBinary(i.charCodeAt()) + '\n';
@@ -27,7 +27,7 @@ export default class BinaryEncoder {
         return result;
     }
     static decode(sequence) {
-        const asArray = sequence.trim().split('\n');
+        const asArray = sequence.trim().replace(/\n/g, ' ').split(' ');
         let result = '';
         for(let num of asArray) {
             result += String.fromCharCode(this.#toDecimal(num));

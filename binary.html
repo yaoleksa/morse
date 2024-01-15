@@ -13,20 +13,24 @@
     <link rel="shortcut icon" href="./imgs/Zodiac-340-cipher-13.png">
   </head>
   <body>
-    <div>
-      <textarea id="input_fieldASCII"></textarea>
-      <button id="encodeASCII">Cipher text</button><br>
-      <span>Number output: </sanp><span id="outputASCII"></span>
-    </div>
-    <div>
-      <textarea id="input_field3ASCII"></textarea>
-      <button id="decodeASCII">Decode text</button><br>
-      <span>Regular output: </sanp><span id="output7ASCII"></span>
+    <div id="binary_container">
+      <div>
+        <textarea id="binary_input"></textarea>
+        <button id="encode_binary">Cipher text</button><br>
+        <span>Binary output: </sanp><span id="output_binary"></span>
+      </div>
+      <div>
+        <textarea id="input_field3binary"></textarea>
+        <button id="decode_binary">Decode text</button><br>
+        <span>Regular output: </sanp><span id="output7binary"></span>
+      </div>
     </div>
     <span id="navigation">
       <a href="./index.html">Morse</a>
       <span> / </span>
       <a href="./ASCII.html">ASCII</a>
+      <span> / </span>
+      <a href="./binary.html">Binary decoder</a>
     </span>
   </body>
   <script defer src="./dist/main.js"></script>
