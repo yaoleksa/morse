@@ -32,10 +32,4 @@ if(window.location.href.includes('index')) {
         document.getElementById('output7binary').innerHTML = BinaryEncoder
         .decode(document.getElementById('input_field3binary').value);
     });
-    document.getElementById('info').addEventListener('mouseenter', () => {
-        document.getElementById('popup').style.display = 'block';
-    });
-    document.getElementById('popup').addEventListener('mouseleave', () => {
-        document.getElementById('popup').style.display = 'none';
-    })
 }

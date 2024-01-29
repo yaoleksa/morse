@@ -3,9 +3,3 @@
     bottom: 0;
     margin: 0 0 2% 50%;
 }
-#popup {
-    display: none;
-    border: solid gray;
-    position: fixed;
-    background-color: lightcyan;
-}
