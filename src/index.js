@@ -33,6 +33,9 @@ if(window.location.href.includes('index')) {
         .decode(document.getElementById('input_field3binary').value);
     });
     document.getElementById('info').addEventListener('mouseenter', () => {
-        document.getElementById('popup').style.display = '';
+        document.getElementById('popup').style.display = 'block';
+    });
+    document.getElementById('popup').addEventListener('mouseleave', () => {
+        document.getElementById('popup').style.display = 'none';
     })
 }
