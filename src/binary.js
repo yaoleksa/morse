@@ -1,5 +1,4 @@
 export default class BinaryEncoder {
-    static leadingZero = document.getElementsByName('leading_zero')[0].checked;
     static #toBinary(decimal) {
         let notReversed = '';
         let copy = decimal;
@@ -19,7 +18,8 @@ export default class BinaryEncoder {
         }
         return result;
     }
-    static encode(txt) { 
+    static encode(txt) {
+        const leadingZero = document.getElementsByName('leading_zero')[0].checked;
         let result = new String();
         let asArray = txt.split('');
         for(let i of asArray) {
@@ -38,7 +38,7 @@ export default class BinaryEncoder {
         const asArray = sequence.trim().replace(/\n/g, ' ').split(' ');
         let result = '';
         for(let num of asArray) {
-            result += String.fromCharCode(this.#toDecimal(num));
+            result += String.fromCharCode(this.#toDecimal(num.replace(/^0+/, '')));
         }
         return result;
     }
