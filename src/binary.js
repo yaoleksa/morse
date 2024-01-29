@@ -19,18 +19,10 @@ export default class BinaryEncoder {
         return result;
     }
     static encode(txt) {
-        const leadingZero = document.getElementsByName('leading_zero')[0].checked;
         let result = new String();
         let asArray = txt.split('');
         for(let i of asArray) {
-            if(leadingZero && /[0-9\\!#\s\\$\\%\\&\\?\\*\\(\\)\\-\\+\\/\\=]/.test(i)) {
-                console.log(i);
-                result += '00' + this.#toBinary(i.charCodeAt()) + '\n';
-            } else if(leadingZero) {
-                result += '0' + this.#toBinary(i.charCodeAt()) + '\n';
-            } else {
-                result += this.#toBinary(i.charCodeAt()) + '\n';
-            }
+            result += this.#toBinary(i.charCodeAt()) + '\n';
         }
         return result;
     }
@@ -38,7 +30,7 @@ export default class BinaryEncoder {
         const asArray = sequence.trim().replace(/\n/g, ' ').split(' ');
         let result = '';
         for(let num of asArray) {
-            result += String.fromCharCode(this.#toDecimal(num.replace(/^0+/, '')));
+            result += String.fromCharCode(this.#toDecimal(num));
         }
         return result;
     }
