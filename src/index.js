@@ -25,9 +25,14 @@ if(window.location.href.includes('index')) {
     });
 } else {
     document.getElementById('encode_binary').addEventListener('click', () => {
-        document.getElementById('output_binary').innerHTML = BinaryEncoder.encode(document.getElementById('binary_input').value);
+        document.getElementById('output_binary').innerHTML = BinaryEncoder
+        .encode(document.getElementById('binary_input').value);
     });
     document.getElementById('decode_binary').addEventListener('click', () => {
-        document.getElementById('output7binary').innerHTML = BinaryEncoder.decode(document.getElementById('input_field3binary').value);
+        document.getElementById('output7binary').innerHTML = BinaryEncoder
+        .decode(document.getElementById('input_field3binary').value);
     });
+    document.getElementById('info').addEventListener('mouseenter', () => {
+        document.getElementById('popup').style.display = '';
+    })
 }

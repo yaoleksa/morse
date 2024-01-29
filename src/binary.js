@@ -1,4 +1,5 @@
 export default class BinaryEncoder {
+    static leadingZero = document.getElementsByName('leading_zero')[0].checked;
     static #toBinary(decimal) {
         let notReversed = '';
         let copy = decimal;
@@ -18,11 +19,18 @@ export default class BinaryEncoder {
         }
         return result;
     }
-    static encode(txt) {
+    static encode(txt) { 
         let result = new String();
         let asArray = txt.split('');
         for(let i of asArray) {
-            result += this.#toBinary(i.charCodeAt()) + '\n';
+            if(leadingZero && /[0-9\\!#\s\\$\\%\\&\\?\\*\\(\\)\\-\\+\\/\\=]/.test(i)) {
+                console.log(i);
+                result += '00' + this.#toBinary(i.charCodeAt()) + '\n';
+            } else if(leadingZero) {
+                result += '0' + this.#toBinary(i.charCodeAt()) + '\n';
+            } else {
+                result += this.#toBinary(i.charCodeAt()) + '\n';
+            }
         }
         return result;
     }
