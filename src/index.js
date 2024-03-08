@@ -1,5 +1,6 @@
 import * as coder from './morze.js';
 import BinaryEncoder from './binary.js';
+import IrsaEncoder from './nato.js';
 
 if(window.location.href.includes('index')) {
     document.getElementById('encode').addEventListener('click', () => {
@@ -23,7 +24,7 @@ if(window.location.href.includes('index')) {
             document.getElementById('input_field3ASCII').value
         );
     });
-} else {
+} else if(window.location.href.includes('binary')) {
     document.getElementById('encode_binary').addEventListener('click', () => {
         document.getElementById('output_binary').innerHTML = BinaryEncoder
         .encode(document.getElementById('binary_input').value);
@@ -31,5 +32,14 @@ if(window.location.href.includes('index')) {
     document.getElementById('decode_binary').addEventListener('click', () => {
         document.getElementById('output7binary').innerHTML = BinaryEncoder
         .decode(document.getElementById('input_field3binary').value);
+    });
+} else {
+    document.getElementById('encode').addEventListener('click', () => {
+        document.getElementById('output').innerHTML = new IrsaEncoder(document
+            .getElementById('input_field').value).encode();
+    });
+    document.getElementById('decode').addEventListener('click', () => {
+        document.getElementById('output7').innerHTML = new IrsaEncoder(document
+            .getElementById('input_field3').value).decode();
     });
 }
