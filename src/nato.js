@@ -43,12 +43,8 @@ export default class IrsaEncoder {
     }
     decode() {
         let result = '';
-        this.sentence.split(' ').forEach(word => {
-            if(this.aplphabet.hasOwnProperty(word[0])) {
-                result += word[0];
-            } else {
-                result += word;
-            }
+        this.sentence.match(/[a-zA-Z]+/g).forEach(word => {
+            result += word[0];
         });
         return result;
     }
