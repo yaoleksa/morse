@@ -35,6 +35,8 @@ export default class IrsaEncoder {
         this.sentence.split('').forEach(char => {
             if(this.aplphabet.hasOwnProperty(char)) {
                 result += this.aplphabet[char] + ' ';
+            } else if(char === ' ') {
+                result += ' space ';
             } else {
                 result += char;
             }
@@ -43,8 +45,14 @@ export default class IrsaEncoder {
     }
     decode() {
         let result = '';
-        this.sentence.match(/[a-zA-Z]+/g).forEach(word => {
-            result += word[0];
+        this.sentence.match(/[a-zA-Z]+|[\!\@\#\$\%\^\&\*\(\)\_\-\=\+\.\,\;\:\'\\s]/g).forEach(word => {
+            if(this.aplphabet.hasOwnProperty(word[0]) && word !== 'space') {
+                result += word[0];
+            } else if(word === 'space') {
+                result += ' ';
+            } else {
+                result += word;
+            }
         });
         return result;
     }
