@@ -45,7 +45,7 @@ export default class IrsaEncoder {
     }
     decode() {
         let result = '';
-        this.sentence.match(/[a-zA-Z]+|[\!\@\#\$\%\^\&\*\(\)\_\-\=\+\.\,\;\:\'\\s]/g).forEach(word => {
+        this.sentence.match(/[a-zA-Z]+|[\!\@\#\$\%\^\&\*\(\)\_\-\=\+\.\,\;\:\'\?]/g).forEach(word => {
             if(this.aplphabet.hasOwnProperty(word[0]) && word !== 'space') {
                 result += word[0];
             } else if(word === 'space') {
