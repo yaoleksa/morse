@@ -6,6 +6,7 @@
 .input-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    width: 25%;
 }
 .submit-button {
     width: 5rem;
