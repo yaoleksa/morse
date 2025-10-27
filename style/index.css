@@ -3,3 +3,22 @@
     bottom: 0;
     margin: 0 0 2% 50%;
 }
+.input-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+.submit-button {
+    width: 5rem;
+    height: 3rem;
+    white-space: normal;
+    border-radius: 1rem;
+    background-color:lightseagreen;
+    font-weight: bold;
+    color:ivory;
+}
+.full-page {
+    background-color: bisque;
+}
+.checkbox-form {
+    margin-bottom: 2rem;
+}

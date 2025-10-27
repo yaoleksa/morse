@@ -1,0 +1,39 @@
+<!doctype html>
+<html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Safe password generator">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yaoleksa.github.io/morse/pwd-gen.html">
+    <meta property="og:image" content="./imgs/password.jpg">
+    <meta property="og:description" content="Helps you to create a stong password">
+    <title>Safe password generator</title>
+    <link rel="stylesheet" href="./style/index.css">
+    <link rel="shortcut icon" href="./imgs/password.png">
+  </head>
+  <body class="full-page">
+    <div class="checkbox-form">
+      <label for="spec-char">Don't use special character</label>
+      <input name="spec-char" type="checkbox">
+    </div>
+    <div class="input-form">
+      <label for="pwd-len">Desired length of your password: </label>
+      <input id="desired-length" name="pwd-len" type="number" placeholder="any number">
+      <input class="submit-button" type="submit" value="generate password">
+    </div>
+    <p id="output"></p>
+    <span id="navigation">
+      <a href="./index.html">Morse</a>
+      <span> / </span>
+      <a href="./ASCII.html">ASCII</a>
+      <span> / </span>
+      <a href="./binary.html">Binary decoder</a>
+      <span> / </span>
+      <a href="./nato.html">IRSA</a>
+      <span> / </span>
+      <a href="./pwd-gen.html">Safe password generator</a>
+    </span>
+  </body>
+  <script src="./src/password-generator.js"></script>
+</html>
