@@ -1,6 +1,7 @@
 import * as coder from './morze.js';
 import BinaryEncoder from './binary.js';
 import IrsaEncoder from './nato.js';
+import * as pwd from './password-generator.js';
 
 if(window.location.href.includes('index')) {
     document.getElementById('encode').addEventListener('click', () => {
@@ -33,7 +34,7 @@ if(window.location.href.includes('index')) {
         document.getElementById('output7binary').innerHTML = BinaryEncoder
         .decode(document.getElementById('input_field3binary').value);
     });
-} else {
+} else if(window.location.href.includes('nato')) {
     document.getElementById('encode').addEventListener('click', () => {
         document.getElementById('output').innerHTML = new IrsaEncoder(document
             .getElementById('input_field').value).encode();
@@ -41,5 +42,10 @@ if(window.location.href.includes('index')) {
     document.getElementById('decode').addEventListener('click', () => {
         document.getElementById('output7').innerHTML = new IrsaEncoder(document
             .getElementById('input_field3').value).decode();
+    });
+} else if(window.location.href.includes('pwd-gen')) {
+    document.getElementById('submit-button-pwd-gen').addEventListener('click', () => {
+        console.log('?');
+        document.getElementById("output").innerText = pwd.pwdGen(document.getElementById("desired-length").value);
     });
 }

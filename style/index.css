@@ -3,12 +3,7 @@
     bottom: 0;
     margin: 0 0 2% 50%;
 }
-.input-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    width: 30%;
-}
-.submit-button {
+#submit-button-pwd-gen {
     width: 5rem;
     height: 3rem;
     white-space: normal;
@@ -16,6 +11,11 @@
     background-color:lightseagreen;
     font-weight: bold;
     color:ivory;
+}
+.input-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 30%;
 }
 .full-page {
     background-color: bisque;

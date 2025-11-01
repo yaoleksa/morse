@@ -146,7 +146,7 @@ function decipher(sentence){
         reverseAlphabetEn[alphabetEn[j]] = j;
     }
     let result = '';
-    for(let k = sentence.length; k >= 0; k--){
+    for(let k = sentence.length; k >= 0; k--) {
         if(keysEn.includes(sentence.slice(0, k))){
             result += reverseAlphabetEn[sentence.slice(0, k)];
             sentence = sentence.replace(sentence.slice(0, k), '').trim();

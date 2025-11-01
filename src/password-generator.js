@@ -6,7 +6,4 @@ const pwdGen = (desiredLength) => {
     return Array.from({length: desiredLength}, v => alphabet[parseInt(Math.random() * alphabetLength)]).join("");
 }
 
-document.getElementsByClassName("submit-button")[0].addEventListener("click", () => {
-    // assign generated value as output text
-    document.getElementById("output").innerText = pwdGen(document.getElementById("desired-length").value); 
-});
+export { pwdGen };
