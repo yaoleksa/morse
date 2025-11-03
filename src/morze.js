@@ -31,34 +31,7 @@ const alphabetUk = {
     'щ': '--.--',
     'ь': '-..-',
     'ю': '..--',
-    'я': '.-.-',
-    '1': '.----',
-    '2': '..---',
-    '3': '...--',
-    '4': '....-',
-    '5': '.....',
-    '6': '-....',
-    '7': '--...',
-    '8': '---..',
-    '9': '----.',
-    '0': '-----',
-    '.': '......',
-    ',': '.-.-.-',
-    '/': '-..-.',
-    '?': '..--..',
-    '!': '--..--',
-    ':': '---...',
-    ';': '-.-.-.', 
-    '(': '-.--.-',
-    ')': '-.--.-',
-    "'": '.----.',
-    '-': '-....-',
-    '"': '.-..-.',
-    ' ': '-...-',
-    '@': '.--.-.',
-    '$': '...-..-',
-    'error/interrupt': '........',
-    'end': '..-.-'
+    'я': '.-.-'
 }
 
 const alphabetEn = {
@@ -88,7 +61,10 @@ const alphabetEn = {
     'ch': '----',
     'c': '-.-.',
     'q': '--.-',
-    'x': '-..-',
+    'x': '-..-'
+}
+
+const common = {
     '1': '.----',
     '2': '..---',
     '3': '...--',
@@ -121,11 +97,16 @@ const alphabetEn = {
 function cipher(sentence){
     const splited = sentence.split('');
     let result = '';
-    for(let i of splited){
-        if(alphabetUk[i]){
-            result += alphabetUk[i] + '\n';
-        } else if(alphabetEn[i]){
-            result += alphabetEn[i] + '\n';
+    for(let i of splited) {
+        let au = alphabetUk[i];
+        let ae = alphabetEn[i];
+        let ac = common[i];
+        if(au) {
+            result += '.---.' + au + '\n';
+        } else if(ae) {
+            result += '-.-..-' + ae + '\n';
+        } else if (ac) {
+            result += ac;
         }
     }
     return result;
@@ -135,24 +116,66 @@ function decipher(sentence){
     sentence = sentence.trim();
     const reverseAlphabetUa = {};
     const reverseAlphabetEn = {};
+    const reverseCommon = {};
     const keysUa = [];
     const keysEn = [];
-    for(let i in alphabetUk){
+    const keysCommon = [];
+    for(let i in alphabetUk) {
         keysUa.push(i);
         reverseAlphabetUa[alphabetUk[i]] = i;
     }
-    for(let j in alphabetEn){
-        keysEn.push(alphabetEn[j]);
-        reverseAlphabetEn[alphabetEn[j]] = j;
+    for(let i in alphabetEn) {
+        keysEn.push(i);
+        reverseAlphabetEn[alphabetEn[i]] = i;
+    }
+    for(let i in common) {
+        keysCommon.push(i);
+        reverseCommon[common[i]] = i;
     }
     let result = '';
+    let alphabet;
+    let chunkCommon;
+    let chunkEn;
+    let chunkUa;
+    let chunk;
+    let languageSelected;
     for(let k = sentence.length; k >= 0; k--) {
-        if(keysEn.includes(sentence.slice(0, k))){
-            result += reverseAlphabetEn[sentence.slice(0, k)];
-            sentence = sentence.replace(sentence.slice(0, k), '').trim();
+        chunk = sentence.slice(0, k);
+        chunkEn = reverseAlphabetEn[chunk];
+        chunkUa = reverseAlphabetUa[chunk];
+        chunkCommon = reverseCommon[chunk];
+        if(chunk === '.---.' && !languageSelected) {
+            languageSelected = true;
+            alphabet = 'ua';
+            sentence = sentence.replace(chunk, '').trim();
+            k = sentence.length + 1;
+            continue;
+        } else if(chunk === '-.-..-' && !languageSelected) {
+            languageSelected = true;
+            alphabet = 'en';
+            sentence = sentence.replace(chunk, '').trim();
+            k = sentence.length + 1;
+            continue;
+        }
+        if(alphabet === 'ua' && keysUa.includes(chunkUa)) {
+            result += chunkUa;
+            sentence = sentence.replace(chunk, '').trim();
+            k = sentence.length + 1;
+            alphabet = null;
+            languageSelected = false;
+        } else if(alphabet === 'en' && keysEn.includes(chunkEn)){
+            result += chunkEn;
+            sentence = sentence.replace(chunk, '').trim();
+            k = sentence.length + 1;
+            alphabet = null;
+            languageSelected = false;
+        } else if(chunkCommon) {
+            result += chunkCommon;
+            sentence = sentence.replace(chunk, '').trim();
             k = sentence.length + 1;
         }
     }
+    console.log(result);
     return result;
 }
 
