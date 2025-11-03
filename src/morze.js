@@ -175,7 +175,6 @@ function decipher(sentence){
             k = sentence.length + 1;
         }
     }
-    console.log(result);
     return result;
 }
 
