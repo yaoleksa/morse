@@ -30,7 +30,7 @@ const alphabetUk = {
     'ш': '--.-',
     'щ': '--.--',
     'ь': '-..-',
-    'ю': '..--',
+    'ю': '..-.-',
     'я': '.-.-'
 }
 
@@ -195,4 +195,4 @@ function fromASCII(str) {
     return res;
 }
 
-export { cipher, decipher, toASCII, fromASCII }
+export { cipher, decipher, toASCII, fromASCII };
