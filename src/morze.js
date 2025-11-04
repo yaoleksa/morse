@@ -114,24 +114,11 @@ function cipher(sentence){
 
 function decipher(sentence){
     sentence = sentence.trim();
-    const reverseAlphabetUa = {};
-    const reverseAlphabetEn = {};
-    const reverseCommon = {};
-    const keysUa = [];
-    const keysEn = [];
-    const keysCommon = [];
-    for(let i in alphabetUk) {
-        keysUa.push(i);
-        reverseAlphabetUa[alphabetUk[i]] = i;
-    }
-    for(let i in alphabetEn) {
-        keysEn.push(i);
-        reverseAlphabetEn[alphabetEn[i]] = i;
-    }
-    for(let i in common) {
-        keysCommon.push(i);
-        reverseCommon[common[i]] = i;
-    }
+    const reverseAlphabetUa = Object.fromEntries(Object.entries(alphabetUk).map(([key, value]) => [value, key]));
+    const reverseAlphabetEn = Object.fromEntries(Object.entries(alphabetEn).map(([key, value]) => [value, key]));
+    const reverseCommon = Object.fromEntries(Object.entries(common).map(([key, value]) => [value, key]));
+    const keysUa = Object.keys(alphabetUk);
+    const keysEn = Object.keys(alphabetEn);
     let result = '';
     let alphabet;
     let chunkCommon;
