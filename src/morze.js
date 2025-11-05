@@ -179,7 +179,7 @@ function decipher(sentence){
             }
             --i;
             chunk = sentence.slice(start, i).trim();
-            chunkCommon = reverseCommon[chunk]; console.log(chunkCommon);
+            chunkCommon = reverseCommon[chunk];
             result += chunkCommon;
             start = i;
         }
