@@ -117,68 +117,74 @@ function decipher(sentence){
     const reverseAlphabetUa = Object.fromEntries(Object.entries(alphabetUk).map(([key, value]) => [value, key]));
     const reverseAlphabetEn = Object.fromEntries(Object.entries(alphabetEn).map(([key, value]) => [value, key]));
     const reverseCommon = Object.fromEntries(Object.entries(common).map(([key, value]) => [value, key]));
-    const keysUa = Object.keys(alphabetUk);
-    const keysEn = Object.keys(alphabetEn);
+    const sentenceLength = sentence.length;
+    let languageSelected;
+    let chunkCommon;
     let result = '';
     let alphabet;
-    let chunkCommon;
     let chunkEn;
     let chunkUa;
     let chunk;
-    let languageSelected;
-    for(let k = sentence.length; k >= 0; k--) {
-        chunk = sentence.slice(0, k);
+    let start = 0;
+    for(let i = 1; i <= sentenceLength; ++i) {
+        chunk = sentence.slice(start, i).trim();
         chunkEn = reverseAlphabetEn[chunk];
         chunkUa = reverseAlphabetUa[chunk];
         chunkCommon = reverseCommon[chunk];
         if(chunk === '.---.' && !languageSelected) {
             languageSelected = true;
             alphabet = 'ua';
-            sentence = sentence.replace(chunk, '').trim();
-            k = sentence.length + 1;
+            start = i;
             continue;
         } else if(chunk === '-.-..-' && !languageSelected) {
             languageSelected = true;
             alphabet = 'en';
-            sentence = sentence.replace(chunk, '').trim();
-            k = sentence.length + 1;
+            start = i;
             continue;
         }
-        if(alphabet === 'ua' && keysUa.includes(chunkUa)) {
+        if(alphabet === 'ua' && chunkUa) {
+            while(chunkUa && i <= sentenceLength + 1) {
+                ++i;
+                chunk = sentence.slice(start, i);
+                chunkUa = reverseAlphabetUa[chunk];
+            }
+            --i;
+            chunk = sentence.slice(start, i);
+            chunkUa = reverseAlphabetUa[chunk];
             result += chunkUa;
-            sentence = sentence.replace(chunk, '').trim();
-            k = sentence.length + 1;
             alphabet = null;
             languageSelected = false;
-        } else if(alphabet === 'en' && keysEn.includes(chunkEn)){
+            start = i;
+            continue;
+        } else if(alphabet === 'en' && chunkEn) {
+            while(chunkEn && i <= sentenceLength + 1) {
+                ++i;
+                chunk = sentence.slice(start, i);
+                chunkEn = reverseAlphabetEn[chunk];
+            }
+            --i;
+            chunk = sentence.slice(start, i);
+            chunkEn = reverseAlphabetEn[chunk];
             result += chunkEn;
-            sentence = sentence.replace(chunk, '').trim();
-            k = sentence.length + 1;
             alphabet = null;
             languageSelected = false;
-        } else if(chunkCommon) {
+            start = i;
+            continue;
+        } 
+        if(chunkCommon) {
+            while(chunkCommon && i <= sentenceLength + 1) {
+                ++i;
+                chunk = sentence.slice(start, i).trim();
+                chunkCommon = reverseCommon[chunk];
+            }
+            --i;
+            chunk = sentence.slice(start, i).trim();
+            chunkCommon = reverseCommon[chunk];
             result += chunkCommon;
-            sentence = sentence.replace(chunk, '').trim();
-            k = sentence.length + 1;
+            start = i;
         }
     }
-    return result;
+    return result.length > 0 ? result : '0x0x0';
 }
 
-function toASCII(str) {
-    let res = '';
-    [...str].forEach(e => {
-        res += e.charCodeAt() + '.';
-    });
-    return res;
-}
-
-function fromASCII(str) {
-    let res = '';
-    str.split('.').forEach(e => {
-        res += e.length > 0 ? String.fromCharCode(parseInt(e)) : '';
-    });
-    return res;
-}
-
-export { cipher, decipher, toASCII, fromASCII };
+export { cipher, decipher };
