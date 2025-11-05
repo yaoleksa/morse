@@ -69,7 +69,7 @@ const common = {
     '2': '..---',
     '3': '...--',
     '4': '....-',
-    '5': '.....',
+    '5': '-.....',
     '6': '-....',
     '7': '--...',
     '8': '---..',
@@ -179,7 +179,7 @@ function decipher(sentence){
             }
             --i;
             chunk = sentence.slice(start, i).trim();
-            chunkCommon = reverseCommon[chunk];
+            chunkCommon = reverseCommon[chunk]; console.log(chunkCommon);
             result += chunkCommon;
             start = i;
         }

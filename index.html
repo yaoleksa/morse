@@ -12,28 +12,30 @@
     <link rel="stylesheet" href="./style/index.css">
     <link rel="shortcut icon" href="./imgs/Zodiac-340-cipher-13.png">
   </head>
-  <body>
+  <body class="morze-page">
     <div>
-      <textarea id="input_field"></textarea>
-      <button id="encode">Cipher text</button><br>
+      <textarea id="input_field" class="morze-text-area"></textarea>
+      <button id="encode" class="morze-buttons">Cipher text</button><br>
       <span>Morse output: </sanp><span id="output"></span>
     </div>
     <div>
-      <textarea id="input_field3"></textarea>
-      <button id="decode">Decode text</button><br>
+      <textarea id="input_field3" class="morze-text-area"></textarea>
+      <button id="decode" class="morze-buttons">Decode text</button><br>
       <span>Regular output: </sanp><span id="output7"></span>
     </div>
-    <span id="navigation">
-      <a href="./index.html">Morse</a>
-      <span> / </span>
-      <a href="./ASCII.html">ASCII</a>
-      <span> / </span>
-      <a href="./binary.html">Binary decoder</a>
-      <span> / </span>
-      <a href="./nato.html">IRSA</a>
-      <span> / </span>
-      <a href="./pwd-gen.html">Safe password generator</a>
-    </span>
+    <div id="navigation">
+      <span>
+        <a href="./index.html">Morse</a>
+        <span> / </span>
+        <a href="./ASCII.html">ASCII</a>
+        <span> / </span>
+        <a href="./binary.html">Binary decoder</a>
+        <span> / </span>
+        <a href="./nato.html">IRSA</a>
+        <span> / </span>
+        <a href="./pwd-gen.html">Safe password generator</a>
+      </span>
+    </div>
   </body>
   <script defer src="./dist/main.js"></script>
 </html>

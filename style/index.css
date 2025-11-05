@@ -1,7 +1,5 @@
 #navigation {
-    position: fixed;
-    bottom: 0;
-    margin: 0 0 2% 50%;
+    margin: 16rem 0 0 36em;
 }
 #submit-button-pwd-gen {
     width: 5rem;
@@ -22,4 +20,15 @@
 }
 .checkbox-form {
     margin-bottom: 2rem;
+}
+.morze-page {
+    background-color:turquoise;
+}
+.morze-buttons {
+    border-radius: 16%;
+    box-shadow: 0vmax;
+}
+.morze-text-area {
+    width: 100%;
+    height: 12rem;
 }
