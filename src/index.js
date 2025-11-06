@@ -15,6 +15,9 @@ if(window.location.href.includes('index')) {
             document.getElementById('input_field3').value.toLowerCase()
         );
     });
+    document.getElementById('morse-clipboard').addEventListener('click', () => {
+        navigator.clipboard.writeText(document.getElementById('output').innerText);
+    })
 } else if(window.location.href.includes('ASCII')) {
     document.getElementById('encodeASCII').addEventListener('click', () => {
         document.getElementById('outputASCII').innerHTML = toASCII(

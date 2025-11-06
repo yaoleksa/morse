@@ -21,14 +21,17 @@
 .checkbox-form {
     margin-bottom: 2rem;
 }
-.morze-page {
+.morse-page {
     background-color:turquoise;
 }
-.morze-buttons {
+.morse-buttons {
     border-radius: 16%;
     box-shadow: 0vmax;
 }
-.morze-text-area {
+.morse-text-area {
     width: 100%;
     height: 12rem;
+}
+.morse-output {
+    display: inline-flex;
 }
