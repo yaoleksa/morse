@@ -10,6 +10,9 @@
     font-weight: bold;
     color:ivory;
 }
+#double-check-clipboard {
+    opacity: 0;
+}
 .input-form {
     display: grid;
     grid-template-columns: 1fr 1fr;

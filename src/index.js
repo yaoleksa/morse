@@ -15,8 +15,21 @@ if(window.location.href.includes('index')) {
             document.getElementById('input_field3').value.toLowerCase()
         );
     });
-    document.getElementById('morse-clipboard').addEventListener('click', () => {
+    document.getElementById('morse-clipboard').addEventListener('click', (event) => {
         navigator.clipboard.writeText(document.getElementById('output').innerText);
+        event.target.style.display = 'none';
+        const doubleCheck = document.getElementById('double-check-clipboard');
+        doubleCheck.style.display = 'inline-flex';
+        let opacity = 1;
+        doubleCheck.style.opacity = opacity;
+        let intervalId = setInterval(() => {
+            doubleCheck.style.opacity = opacity;
+            opacity -= 0.1;
+            if(opacity < 0) {
+                event.target.style.display = 'inline-flex';
+                clearInterval(intervalId);
+            }
+        }, 250);
     })
 } else if(window.location.href.includes('ASCII')) {
     document.getElementById('encodeASCII').addEventListener('click', () => {
