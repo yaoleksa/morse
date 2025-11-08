@@ -13,6 +13,9 @@
 #double-check-clipboard {
     opacity: 0;
 }
+#morse-clear-content-brush:active {
+    height: 6%;
+}
 .input-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -37,4 +40,8 @@
 }
 .morse-output {
     display: inline-flex;
+}
+.textarea-wrapper {
+    display: grid;
+    grid-template-columns: 42fr 1fr;
 }

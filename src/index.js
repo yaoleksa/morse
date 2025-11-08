@@ -5,6 +5,7 @@ import * as coder from './morze.js';
 import IrsaEncoder from './nato.js';
 
 if(window.location.href.includes('index')) {
+    const inputField3 = document.getElementById('input_field3');
     document.getElementById('encode').addEventListener('click', () => {
         document.getElementById('output').innerHTML = coder.cipher(
             document.getElementById('input_field').value.toLowerCase()
@@ -12,7 +13,7 @@ if(window.location.href.includes('index')) {
     });
     document.getElementById('decode').addEventListener('click', () => {
         document.getElementById('output7').innerHTML = coder.decipher(
-            document.getElementById('input_field3').value.toLowerCase()
+            inputField3.value.toLowerCase()
         );
     });
     document.getElementById('morse-clipboard').addEventListener('click', (event) => {
@@ -30,7 +31,10 @@ if(window.location.href.includes('index')) {
                 clearInterval(intervalId);
             }
         }, 250);
-    })
+    });
+    document.getElementById('morse-clear-content-brush').addEventListener('click', () => {
+        inputField3.value = '';
+    });
 } else if(window.location.href.includes('ASCII')) {
     document.getElementById('encodeASCII').addEventListener('click', () => {
         document.getElementById('outputASCII').innerHTML = toASCII(

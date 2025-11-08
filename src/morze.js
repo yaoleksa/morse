@@ -112,11 +112,13 @@ function cipher(sentence){
     return result;
 }
 
+// Define constants to reuse
+const reverseAlphabetUa = Object.fromEntries(Object.entries(alphabetUk).map(([key, value]) => [value, key]));
+const reverseAlphabetEn = Object.fromEntries(Object.entries(alphabetEn).map(([key, value]) => [value, key]));
+const reverseCommon = Object.fromEntries(Object.entries(common).map(([key, value]) => [value, key]));
+
 function decipher(sentence){
     sentence = sentence.trim();
-    const reverseAlphabetUa = Object.fromEntries(Object.entries(alphabetUk).map(([key, value]) => [value, key]));
-    const reverseAlphabetEn = Object.fromEntries(Object.entries(alphabetEn).map(([key, value]) => [value, key]));
-    const reverseCommon = Object.fromEntries(Object.entries(common).map(([key, value]) => [value, key]));
     const sentenceLength = sentence.length;
     let languageSelected;
     let chunkCommon;
