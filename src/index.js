@@ -5,14 +5,19 @@ import * as coder from './morze.js';
 import IrsaEncoder from './nato.js';
 
 if(window.location.href.includes('index')) {
+    // Store all management elements into variables
     const inputField3 = document.getElementById('input_field3');
+    const output7 = document.getElementById('output7');
+    const inputField = document.getElementById('input_field');
+    const output = document.getElementById('output');
+    // Add event listeners
     document.getElementById('encode').addEventListener('click', () => {
-        document.getElementById('output').innerHTML = coder.cipher(
-            document.getElementById('input_field').value.toLowerCase()
+        output.innerHTML = coder.cipher(
+            inputField.value.toLowerCase()
         );
     });
     document.getElementById('decode').addEventListener('click', () => {
-        document.getElementById('output7').innerHTML = coder.decipher(
+        output7.innerHTML = coder.decipher(
             inputField3.value.toLowerCase()
         );
     });
@@ -32,8 +37,13 @@ if(window.location.href.includes('index')) {
             }
         }, 250);
     });
-    document.getElementById('morse-clear-content-brush').addEventListener('click', () => {
+    document.getElementById('morse-clear-content-brush-wrapper-output').addEventListener('click', () => {
         inputField3.value = '';
+        output7.innerText = '';
+    });
+    document.getElementById('morse-clear-content-brush-wrapper-input').addEventListener('click', () => {
+        inputField.value = '';
+        output.innerText = '';
     });
 } else if(window.location.href.includes('ASCII')) {
     document.getElementById('encodeASCII').addEventListener('click', () => {

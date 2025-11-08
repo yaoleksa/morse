@@ -13,8 +13,9 @@
 #double-check-clipboard {
     opacity: 0;
 }
-#morse-clear-content-brush:active {
-    height: 6%;
+.morse-brush-wrapper {
+    padding: 0.5%;
+    height: 9%;
 }
 .input-form {
     display: grid;
@@ -40,6 +41,9 @@
 }
 .morse-output {
     display: inline-flex;
+}
+.morse-clear-content-brush:active {
+    height: 6%;
 }
 .textarea-wrapper {
     display: grid;
